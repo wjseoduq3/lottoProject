@@ -2,7 +2,7 @@ import pymysql
 import pandas as pd
 from collections import Counter  # 빈도수 계산 모듈
 
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 
 dbConn = pymysql.connect(host='192.168.0.100', user='guest01', password='12345', db='lottodbjdy')
@@ -34,3 +34,11 @@ lotto_num_list = list(lotto_num_df['당첨번호1'])+list(lotto_num_df['당첨�
 
 n_lotto_data = Counter(lotto_num_list)  # 빈도수 계산 모듈 활용
 # print(n_lotto_data)
+
+data = pd.Series(n_lotto_data)
+data = data.sort_index()
+data.plot(figsize=(20,25), kind='barh', grid=True, title='lotto_645')
+plt.show()
+
+cur.close()
+dbConn.close()
