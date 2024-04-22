@@ -10,4 +10,5 @@ print(df)
 engine = create_engine('mysql+pymysql://guest01:12345@192.168.0.100:3306/lottodbjdy?charset=utf8mb4')
 engine.connect()
 
-df.to_sql(name='test_tbl',con=engine,if_exists='append',index=False)
+# append는 추가, replace는 갱신, fail는 테이블이 이미 있으면 막아버림, no option도 막아버림
+df.to_sql(name='test_tbl',con=engine,if_exists='replace',index=False)
