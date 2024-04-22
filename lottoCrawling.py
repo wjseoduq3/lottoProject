@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import pandas as pd
 
+
 def get_lottoNumber(count):  # count: 추첨회차 입력
     url = f"https://dhlottery.co.kr/gameResult.do?method=byWin&drwNo={count}"
     html = requests.get(url).text
@@ -38,8 +39,17 @@ for count in range(1, 1117):
         'lottoNum6': lottoResult['lottoNumber'][5],
         'bonusNum': lottoResult['bonusNumber']
     })
+    print(f"{count}회 처리중...")
+# print(lottoDf_list)
 
-print(lottoDf_list)
+lottoDF = pd.DataFrame(data=lottoDf_list, columns=['count','lottoDate',
+                            'lottoNum1','lottoNum2','lottoNum3','lottoNum4','lottoNum5',
+                            'lottoNum6','bonusNum'])
+print(lottoDF)
+
+
+
+
 
 
 
