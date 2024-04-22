@@ -4,7 +4,6 @@ from collections import Counter  # 빈도수 계산 모듈
 
 import matplotlib.pyplot as plt
 
-
 dbConn = pymysql.connect(host='192.168.0.100', user='guest01', password='12345', db='lottodbjdy')
 sql = 'select * from lottojdy_tbl'
 cur = dbConn.cursor()
